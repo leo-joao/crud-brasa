@@ -11,3 +11,5 @@ Tecnologias utilizadas:
 - JavaScript
 - jQuery
 - Template: AdminLTE
+
+Obs: login principal "admin/admin", os demais também a senha é o mesmo que o login.
