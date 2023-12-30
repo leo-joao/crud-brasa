@@ -42,7 +42,7 @@
               <div class="form-group d-flex justify-content-between">
                 <input type="submit" name="submit" class="btn btn-primary btn-md" value="Login">
 
-                <button class="btn btn-warning btn-md float-right" name="message">Enviar Mensagem</button>
+                <button type="button" class="btn btn-warning btn-md float-right" onclick="newMessage()">Enviar Mensagem</button>
 
                 <div id="register-link" class="text-right">
                   <a href="<?php echo base_url() ?>registration" class="text-info">Solicitar Registro</a>
@@ -56,3 +56,9 @@
     </div>
   </div>
 </body>
+
+<script>
+  function newMessage(id) {
+    window.location.href = "<?= base_url(); ?>newmsg";
+  }
+</script>

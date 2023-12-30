@@ -17,6 +17,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('theme/') ?>dist/css/adminlte.min.css">
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 

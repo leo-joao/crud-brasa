@@ -116,7 +116,7 @@ $isLogged = $loginData['isLogged'];
                     <td>
                       <button type="button" id="answer" class="btn btn-info answer" data-toggle="modal" data-target="#modal-answer" value="<?= $idMensagem; ?>" <?= $answerEnable; ?>>Responder</button>
                       <button type="button" id="edit" class="btn btn-warning edit" data-toggle="modal" data-target="#modal-answer" value="<?= $idMensagem; ?>" <?= $editEnable; ?>>Editar Resposta</button>
-                      <button type="button" id="delete" class="btn btn-danger delete" data-toggle="modal" data-target="#modal-delete" value="<?= $idMensagem; ?>" onclick="delete_message('<?= $idMensagem; ?>')">Excluir</button>
+                      <button type="button" id="delete" class="btn btn-danger delete" data-toggle="modal" data-target="#modal-delete" value="<?= $idMensagem; ?>" onclick="deleteMessage('<?= $idMensagem; ?>')">Excluir</button>
                     </td>
                   </tr>
                 <?php endforeach; ?>
@@ -132,15 +132,28 @@ $isLogged = $loginData['isLogged'];
 <!-- /.content-wrapper -->
 
 <script>
-  $(document).ready(function() {
-
-    function delete_message(id) {
-      if (!confirm("Deseja realmente excluir a mensagem?")) {
-        return false;
+  function deleteMessage(id) {
+    Swal.fire({
+      title: "Quer realmente excluir a mensagem?",
+      text: "Essa ação não pode ser desfeita",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim, excluir!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Excluido!",
+          text: "Mensagem excluída",
+          icon: "success"
+        });
+        window.location.href = "<?= base_url(); ?>/delete/" + id;
       }
-      window.location.href = "<?= base_url(); ?>/delete/" + id;
-    }
+    });
+  }
 
+  $(document).ready(function() {
     $(".answer").on("click", function() {
       var idMensagem = $(this).val();
       $("#idMensagem").val(idMensagem);
